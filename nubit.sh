@@ -61,7 +61,7 @@ while true; do
 			
 			if [ ! -f "$MNEMONIC_FILE" ]; then
 				echo -e "${RED}Нужные файлы не найдены${NC}"
-				echo -e "${RED}Если вы уже установили ноду - просто подождите несколько минут${NC}"
+				echo -e "${RED}Если вы только что установили ноду - просто подождите несколько минут${NC}"
 			else
 				SEED_PHRASE=$(cat "$MNEMONIC_FILE")
 				PUBKEY=$($NKEY_BIN list --p2p.network nubit-alphatestnet-1 --node.type light | grep 'pubkey:' | awk -F'"key":' '{print $2}' | awk -F'"' '{print $2}')
