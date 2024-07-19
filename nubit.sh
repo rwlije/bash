@@ -1,15 +1,3 @@
-#!/bin/bash
-
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m'
-
-NUBIT_DIR="$HOME/nubit-node"
-NKEY_BIN="$NUBIT_DIR/bin/nkey"
-MNEMONIC_FILE="$NUBIT_DIR/mnemonic.txt"
-DIRS=("$HOME/nubit-node" "$HOME/.nubit-light-nubit-alphatestnet-1")
-NUBIT_BIN="$NUBIT_DIR/bin/nubit"
-
 while true; do
 	echo -e ''
 	echo -e '██╗░░██╗░█████╗░██████╗░██████╗░'
@@ -104,7 +92,7 @@ while true; do
 		5)
 			read -p "Вы уверены, что хотите удалить ноду? (y/n): " confirm
 			
-			if [ "$confirm" = "y" ]; then
+			if [ "$(echo "$confirm" | tr '[:upper:]' '[:lower:]')" = "y" ]; then
 				screen_id=$(screen -ls | grep 'nubit' | awk '{print $1}' | sed 's/.$//') 
 		  
 				if [ -n "$screen_id" ]; then
@@ -133,7 +121,6 @@ while true; do
 				fi
 			fi
 			;;
-   
+			
 	esac
- 
 done
